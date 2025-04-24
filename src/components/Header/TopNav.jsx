@@ -6,6 +6,8 @@ import {
   List,
   ListItem,
   ListItemText,
+  useMediaQuery,
+  Divider,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -20,6 +22,8 @@ import { useState } from "react";
 const TopNav = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const isMobile = useMediaQuery("(max-width:400px)");
+
   const handleToggle = () => {
     setDrawerOpen((prev) => !prev);
   };
@@ -27,7 +31,9 @@ const TopNav = () => {
     <Box className={styles.container}>
       <Box
         className={styles.topNav}
-        style={{ paddingInline: drawerOpen ? "1rem" : "2rem" }}
+        style={{
+          paddingInline: drawerOpen ? "0.25rem" : isMobile ? "0.25rem" : "2rem",
+        }}
       >
         <Box display="flex" gap={1} justifyContent="center" alignItems="center">
           <Box className={styles.hamburger}>
@@ -39,13 +45,25 @@ const TopNav = () => {
               )}
             </IconButton>
           </Box>
+          <Divider
+            orientation="vertical"
+            flexItem
+            sx={{
+              backgroundColor: "var(--color-coral-interactive)",
+              width: "1px",
+              height: "24px",
+              alignSelf: "center",
+              marginRight: "5px",
+            }}
+            className={styles.hamburger}
+          />
           <Box className={styles.logo}></Box>
         </Box>
         <Box className={styles.icons}>
           <IconButton>
             <Search htmlColor="var( --color-primary-light)" />
           </IconButton>
-          {!drawerOpen && <Typography className={styles.lang}>EN</Typography>}
+          <Typography className={styles.lang}>EN</Typography>
           <IconButton>
             <ShoppingCart
               variant="outlined"
@@ -54,11 +72,9 @@ const TopNav = () => {
           </IconButton>
           <IconButton>
             <PersonOutline htmlColor="var( --color-primary-light)" />
-            {!drawerOpen && (
-              <Typography className={styles.login} color="white">
-                Log in
-              </Typography>
-            )}
+            <Typography className={styles.login} color="white">
+              Log in
+            </Typography>
           </IconButton>
         </Box>
       </Box>
