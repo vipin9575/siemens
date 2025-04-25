@@ -1,0 +1,188 @@
+.container {
+  color: var(--color-primary-light);
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem 1rem;
+
+    .logo {
+      background-image: url("../../../assets/icons/siemens-logo.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 120px;
+      height: 20px;
+    }
+
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      @media (max-width: 400px) {
+        gap: 0;
+      }
+
+      .login {
+        margin-left: 0.5rem;
+        cursor: pointer;
+        font-size: 1rem;
+
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
+
+      .lang {
+        font-size: 1.125rem;
+        cursor: pointer;
+
+        @media (max-width: 991px) {
+          display: none;
+        }
+      }
+
+      .lang:hover {
+        color: var(--color-green-light);
+      }
+
+      svg:hover {
+        color: var(--color-green-light);
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    gap: 1rem;
+    padding: 1.2rem 2rem;
+    font-size: 1rem;
+
+    @media (max-width: 991px) {
+      display: none;
+    }
+
+    span {
+      cursor: pointer;
+      font-weight: 400;
+      padding-block: 6px;
+
+      &.active {
+        border-right: 1px solid var(--color-coral-interactive);
+        padding-right: 1rem;
+        font-weight: 900;
+      }
+
+      &:hover {
+        color: var(--color-green-light);
+      }
+    }
+  }
+  .hamburger {
+    display: none;
+
+    @media (max-width: 991px) {
+      display: block;
+    }
+  }
+}
+
+.menuItem {
+  padding: 1.5rem 4rem 1.5rem 0;
+  border-bottom: 1px solid var(--color-interactive-coral-50-db);
+}
+
+.menuItemLast {
+  padding: 0rem 4rem 1.5rem 0;
+  border-bottom: 1px solid var(--color-interactive-coral-50-db);
+}
+
+.menuItemNoBorder {
+  padding: 0rem 4rem 4rem 0;
+}
+
+//  --- scrollNav ---
+.scrollNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: var(--color-primary-light);
+  padding: 1.2rem 2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1280px;
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .menuWrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .menu {
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: transform 0.1s linear;
+
+    span {
+      cursor: pointer;
+      font-weight: 400;
+      padding-block: 6px;
+
+      &.active {
+        border-right: 1px solid var(--color-coral-interactive);
+        padding-right: 1rem;
+        font-weight: 900;
+      }
+
+      &:hover {
+        color: var(--color-green-light);
+      }
+    }
+  }
+
+  .icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 0.5rem;
+
+    .login {
+      margin-left: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .lang {
+      font-size: 1.125rem;
+      cursor: pointer;
+    }
+
+    .lang:hover,
+    svg:hover {
+      color: var(--color-green-light);
+    }
+  }
+}

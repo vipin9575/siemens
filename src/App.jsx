@@ -1,14 +1,12 @@
-import { useEffect, useState, useRef } from "react";
-import SubNav from "./components/Header/SubNav";
-import TopNav from "./components/Header/TopNav";
-import ScrollNav from "./components/Header/ScrollNav";
+import { useEffect, useState } from "react";
+import SubNav from "./components/Navbar/SubNav/SubNav";
 import HeroSection from "./pages/Hero/HeroSection";
-import { Box } from "@mui/material";
+import { Container, useMediaQuery } from "@mui/material";
+import TopNav from "./components/Navbar/TopNav/TopNav";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileView, setIsMobileView] = useState(false);
-  const headerRef = useRef(null);
+  const isMobileView = useMediaQuery("(max-width: 991px)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,40 +17,40 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobileView(window.matchMedia("(max-width: 991px)").matches);
-    };
-
-    checkScreenSize();
-
-    const resizeListener = () => checkScreenSize();
-    window.addEventListener("resize", resizeListener);
-
-    return () => window.removeEventListener("resize", resizeListener);
-  }, []);
-
   const getScrolledHeight = () => {
     if (isMobileView) {
-      return "78px";
+      return "75px";
     }
-    return isScrolled ? "88px" : "150px";
-  };
-
-  const getNavComponent = () => {
-    if (isMobileView) {
-      return <TopNav />; 
-    }
-    return isScrolled ? <ScrollNav /> : <TopNav />;
+    return isScrolled ? "78px" : "150px";
   };
 
   return (
     <>
-      <Box ref={headerRef}>
-        {getNavComponent()}
+      <Container
+        maxWidth
+        disableGutters
+        style={{
+          backgroundColor: "var(--color-primary)",
+          position: "sticky",
+          top: 0,
+          zIndex: 999,
+        }}
+      >
+        <TopNav isMenuVisible={isMobileView} />
+      </Container>
+      <Container
+        maxWidth
+        disableGutters
+        sx={{
+          position: "sticky",
+          top: `${getScrolledHeight()}`,
+          zIndex: 999,
+          background: "white",
+        }}
+      >
         <SubNav scrolledHeight={getScrolledHeight()} />
-        <HeroSection />
-      </Box>
+      </Container>
+      <HeroSection />
     </>
   );
 }
