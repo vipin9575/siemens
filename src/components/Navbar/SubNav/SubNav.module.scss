@@ -11,7 +11,7 @@
   width: 100%;
   max-width: 1280px;
 
-  @media (max-width: 991px) {
+  @media (max-width: 456px) {
     padding: 0 0.8rem;
   }
 
@@ -30,6 +30,7 @@
       color: var(--color-primary);
       border-radius: 0;
       height: 60px;
+      text-transform: capitalize;
 
       &:hover {
         background-color: var(--color-grey);
@@ -58,4 +59,25 @@
   z-index: 99;
   position: absolute;
   z-index: 9999;
+}
+
+.popperWrapper {
+  z-index: 9999 !important;
+  border-radius: 0 !important;
+  max-width: 16rem;
+}
+
+.arrow {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-primary-light);
+  top: -0.5rem;
+  left: 1.5rem;
+  transform: rotate(45deg);
+  z-index: 1300;
+}
+
+.popperTitle {
+  padding: 1rem 1.5rem;
 }

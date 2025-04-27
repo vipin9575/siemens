@@ -1,0 +1,21 @@
+.cardSection {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+  padding: 3rem 2rem;
+  padding: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+
+  @media (max-width: 456px) {
+    padding: 3rem 1rem;
+  }
+
+  
+
+  h3 {
+    color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}

@@ -1,0 +1,36 @@
+.footerContainer {
+  background-color: var(--color-primary);
+  color: var(--color-primary-light);
+  padding: 1.5rem;
+  padding-top: 3rem;
+
+  .innerContainer {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    .link {
+      position: relative;
+      text-decoration: none !important;
+      color: var(--color-primary-light) !important;
+      display: inline-block !important;
+      padding-bottom: 4px;
+      align-self: flex-start;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-primary-light);
+        transition: width 0.5s ease;
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}

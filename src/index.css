@@ -7,11 +7,14 @@
   --color-primary-light: #ffffff;
   --color-secondary-light: #ebebee;
   --color-green-light: #00ffb9;
+  --color-green-lighter: #c4ffee;
   --color-coral-interactive: #00cccc;
   --color-yellow: #faa50a;
   --color-dark: #000000;
   --color-grey: #d9d9df;
   --color-interactive-coral-50-db: #007082;
+  --color-link-focus: #007993;
+  --color-link-hover: #005159;
 }
 
 * {

@@ -1,0 +1,71 @@
+.mainSectionContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+
+  .descriptionContainer {
+    max-width: 810px;
+    padding: 3.5rem 0rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .description {
+    font-size: 1rem;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+  }
+
+  .accordionWrapper {
+    width: 100%;
+    margin: 2rem 0 0;
+  }
+
+  .accordion {
+    border-radius: 0 !important;
+    margin-block: 0 !important;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .accordionSummary {
+    background-color: var(--color-green-lighter);
+    border-top: 2px solid var(--color-dark);
+    padding: 1.5rem 0.5rem;
+
+    span {
+      margin: 0;
+    }
+  }
+
+  .accordionTitle {
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .accordionDetails {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .accordionDescription {
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+  }
+
+  .accordionList {
+    color: var(--color-dark);
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      list-style: disc;
+    }
+  }
+}

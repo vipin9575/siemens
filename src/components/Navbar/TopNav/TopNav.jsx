@@ -8,7 +8,7 @@ import {
   ListItemText,
   useMediaQuery,
   Divider,
-  Container,
+  Stack,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -16,15 +16,27 @@ import {
   Search,
   ShoppingCart,
   PersonOutline,
+  ChevronRight,
+  TurnLeft,
+  NorthEast,
 } from "@mui/icons-material";
 import styles from "./TopNav.module.scss";
 import { useEffect, useRef, useState } from "react";
+import { menuItems } from "../../../data";
 
 const TopNav = () => {
   const containerRef = useRef(null);
+  const menuRef = useRef(null);
+  const firstItemRef = useRef(null);
+  const [translateX, setTranslateX] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [subDrawerOpen, setSubDrawerOpen] = useState(false);
+  const [nestedDrawerOpen, setNestedDrawerOpen] = useState(false);
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
+  const [activeNestedSubMenu, setActiveNestedSubMenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useMediaQuery("(max-width:450px)");
+  const isDesktop = useMediaQuery("(min-width:991px)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,13 +47,33 @@ const TopNav = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleToggle = () => {
+  const handleDrawerOpen = () => {
     setDrawerOpen((prev) => !prev);
+    setSubDrawerOpen(false);
+    setNestedDrawerOpen(false);
   };
 
-  const menuRef = useRef(null);
-  const firstItemRef = useRef(null);
-  const [translateX, setTranslateX] = useState(0);
+  const handleSubDrawerOpen = (menuItem) => {
+    setActiveSubMenu(menuItem);
+    setSubDrawerOpen(true);
+  };
+  const handleSubDrawerClose = () => {
+    setActiveSubMenu(null);
+    setSubDrawerOpen(false);
+  };
+
+  const handleNestedDrawerOpen = (menuItem) => {
+    if (menuItem.hasUpArrow) {
+      return window.open(menuItem.url, "_blank");
+    }
+    setActiveNestedSubMenu(menuItem);
+    setNestedDrawerOpen(true);
+  };
+
+  const handleNestedDrawerClose = () => {
+    setActiveNestedSubMenu(null);
+    setNestedDrawerOpen(false);
+  };
 
   useEffect(() => {
     if (!isScrolled) return;
@@ -50,7 +82,7 @@ const TopNav = () => {
     if (!menu || !firstItem) return;
 
     const firstItemWidth = firstItem.offsetWidth + 16;
-    const duration = 1000; // 1 second
+    const duration = 1000;
     const startTime = performance.now();
 
     const animate = (currentTime) => {
@@ -67,10 +99,13 @@ const TopNav = () => {
 
     requestAnimationFrame(animate);
   }, [isScrolled]);
+
   return (
     <>
       <Box
-        className={`${styles.container} ${isScrolled ? styles.hidden : ""}`}
+        className={`${styles.container} ${
+          isScrolled && isDesktop ? styles.hidden : ""
+        }`}
         ref={containerRef}
       >
         <Box
@@ -90,7 +125,7 @@ const TopNav = () => {
             alignItems="center"
           >
             <Box className={styles.hamburger}>
-              <IconButton onClick={handleToggle}>
+              <IconButton onClick={handleDrawerOpen}>
                 {drawerOpen ? (
                   <CloseIcon htmlColor="white" />
                 ) : (
@@ -140,94 +175,6 @@ const TopNav = () => {
           <Typography component="span">Industries</Typography>
           <Typography component="span">Training & support</Typography>
         </Box>
-
-        {/* Drawer for mobile menu */}
-        <Drawer
-          anchor="left"
-          open={drawerOpen}
-          onClose={handleToggle}
-          PaperProps={{
-            sx: {
-              width: "100%",
-              height: "100%",
-              backgroundColor: "var(--color-interactive-coral-8-db)",
-              color: "var(--color-primary-light)",
-              marginTop: "66px",
-            },
-          }}
-        >
-          <List>
-            <ListItem button>
-              <ListItemText
-                primary="Digital Industries Software"
-                className={styles.menuItem}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Software & products" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Solutions & services" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Industries" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary="Training & support"
-                className={styles.menuItemLast}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="How to buy" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Buying with Siemens" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Buy online" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Partners" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Academics" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Renewals" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary="Refund Policy"
-                className={styles.menuItemLast}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="QUICK LINKS" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Blogs" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Case studies" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Tecnology glossary" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary="Refund Policy"
-                className={styles.menuItemLast}
-              />
-            </ListItem>
-            <ListItem button>
-              <ListItemText
-                primary="Choose your language"
-                className={styles.menuItemNoBorder}
-              />
-            </ListItem>
-          </List>
-        </Drawer>
       </Box>
       <Box
         className={`${styles.scrollNav} ${!isScrolled ? styles.hidden : ""}`}
@@ -267,6 +214,165 @@ const TopNav = () => {
           </IconButton>
         </Box>
       </Box>
+
+      {/* main drawer */}
+      <Drawer
+        anchor="left"
+        open={drawerOpen}
+        onClose={handleDrawerOpen}
+        PaperProps={{
+          sx: {
+            width: "100%",
+            height: "100%",
+            backgroundColor: "var(--color-interactive-coral-8-db)",
+            color: "var(--color-primary-light)",
+            marginTop: "74px",
+          },
+        }}
+      >
+        <List sx={{ paddingBottom: "6rem" }}>
+          {menuItems.map((item, index) => (
+            <ListItem
+              button
+              key={index}
+              onClick={
+                item.hasSubMenu ? () => handleSubDrawerOpen(item) : undefined
+              }
+            >
+              <ListItemText
+                primary={item.title}
+                className={item.className ? item.className : ""}
+                sx={`${
+                  item.hasBorder
+                    ? "border-bottom: 1px solid var(--color-interactive-coral-50-db); padding-bottom: 1.5rem;"
+                    : ""
+                }`}
+              />
+              {item.hasSubMenu && (
+                <IconButton edge="end" size="small">
+                  <ChevronRight htmlColor="var(--color-primary-light)" />
+                </IconButton>
+              )}
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+
+      {/* Sub Drawer */}
+      <Drawer
+        anchor="right"
+        open={subDrawerOpen}
+        PaperProps={{
+          sx: {
+            width: "100%",
+            height: "100%",
+            backgroundColor: "var(--color-interactive-coral-8-db)",
+            color: "var(--color-primary-light)",
+            marginTop: "74px",
+          },
+        }}
+      >
+        <Box sx={{ px: 1.5, pt: 3, pb: 1 }}>
+          <Stack direction="row" alignItems="center" gap={2} pb={2}>
+            <TurnLeft htmlColor="white" onClick={handleSubDrawerClose} />
+            <Typography variant="h6">{activeSubMenu?.title}</Typography>
+          </Stack>
+          <Divider
+            orientation="horizontal"
+            flexItem
+            sx={{ backgroundColor: "var(--color-interactive-coral-50-db)" }}
+          />
+        </Box>
+        <List sx={{ paddingBottom: "6rem", pt: 0 }}>
+          {activeSubMenu?.subMenu.map((item, index) => (
+            <ListItem
+              button
+              key={index}
+              onClick={
+                item.hasSubMenu || item.hasUpArrow
+                  ? () => handleNestedDrawerOpen(item)
+                  : undefined
+              }
+            >
+              <ListItemText
+                primary={item.title}
+                sx={`${
+                  item.hasBorder
+                    ? "border-bottom: 1px solid var(--color-interactive-coral-50-db); padding-bottom: 1.5rem;"
+                    : ""
+                }`}
+              />
+              {item.hasSubMenu && (
+                <IconButton edge="end" size="small">
+                  <ChevronRight htmlColor="var(--color-primary-light)" />
+                </IconButton>
+              )}
+              {item.hasUpArrow && (
+                <IconButton edge="start" size="small">
+                  <NorthEast htmlColor="var(--color-primary-light)" />
+                </IconButton>
+              )}
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+
+      {/* Nested Sub Drawer */}
+      {activeNestedSubMenu?.subMenu && (
+        <Drawer
+          anchor="left"
+          open={nestedDrawerOpen}
+          PaperProps={{
+            sx: {
+              width: "100%",
+              height: "100%",
+              backgroundColor: "var(--color-interactive-coral-8-db)",
+              color: "var(--color-primary-light)",
+              marginTop: "74px",
+            },
+          }}
+        >
+          <Box sx={{ px: 1.5, pt: 3, pb: 1 }}>
+            <Stack direction="row" alignItems="center" gap={2} pb={2}>
+              <TurnLeft htmlColor="white" onClick={handleNestedDrawerClose} />
+              <Typography variant="h6">{activeNestedSubMenu?.title}</Typography>
+            </Stack>
+            <Divider
+              orientation="horizontal"
+              flexItem
+              sx={{ backgroundColor: "var(--color-interactive-coral-50-db)" }}
+            />
+          </Box>
+          <List sx={{ paddingBottom: "6rem", pt: 0 }}>
+            {activeNestedSubMenu?.subMenu.map((item, index) => (
+              <ListItem
+                button
+                key={index}
+                onClick={
+                  item.hasSubMenu
+                    ? () => handleNestedDrawerOpen(item)
+                    : undefined
+                }
+              >
+                <ListItemText
+                  primary={item.title}
+                  className={item.className ? item.className : ""}
+                  sx={`${
+                    item.hasBorder
+                      ? "border-bottom: 1px solid var(--color-interactive-coral-50-db); padding-bottom: 1.5rem;"
+                      : ""
+                  }`}
+                />
+                {item.hasSubMenu && (
+                  <IconButton edge="end" size="small">
+                    <ChevronRight htmlColor="var(--color-primary-light)" />
+                  </IconButton>
+                )}
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+      )}
     </>
   );
 };

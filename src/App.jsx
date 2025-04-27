@@ -3,6 +3,11 @@ import SubNav from "./components/Navbar/SubNav/SubNav";
 import HeroSection from "./pages/Hero/HeroSection";
 import { Container, useMediaQuery } from "@mui/material";
 import TopNav from "./components/Navbar/TopNav/TopNav";
+import styles from "./styles/variable.module.scss";
+import Footer from "./pages/Footer/Footer";
+import CardSection from "./pages/CardSection/CardSection";
+import DeepenKnowledge from "./pages/DeepenKnowledge/DeepenKnowledge";
+import MainSection from "./pages/MainSection/MainSection";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,7 +38,7 @@ function App() {
           backgroundColor: "var(--color-primary)",
           position: "sticky",
           top: 0,
-          zIndex: 999,
+          zIndex: 9999,
         }}
       >
         <TopNav isMenuVisible={isMobileView} />
@@ -45,12 +50,26 @@ function App() {
           position: "sticky",
           top: `${getScrolledHeight()}`,
           zIndex: 999,
-          background: "white",
+          background: "var(--color-secondary-light)",
         }}
       >
         <SubNav scrolledHeight={getScrolledHeight()} />
       </Container>
-      <HeroSection />
+      <Container maxWidth disableGutters className={styles.heroSection}>
+        <HeroSection />
+      </Container>
+      <Container maxWidth disableGutters>
+        <MainSection />
+      </Container>
+      <Container maxWidth disableGutters>
+        <CardSection />
+      </Container>
+      <Container maxWidth disableGutters>
+        <DeepenKnowledge />
+      </Container>
+      <Container maxWidth disableGutters>
+        <Footer />
+      </Container>
     </>
   );
 }
