@@ -1,0 +1,65 @@
+.heroBackground {
+  background-image: url("../../assets/images/hero_backgroundImage.avif");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 60vh;
+  width: 100%;
+  position: relative;
+
+  &::after {
+    background: linear-gradient(
+      to right,
+      #000028 0,
+      rgba(0, 0, 40, 0.75) 40%,
+      rgba(0, 0, 40, 0.2) 65%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  @media (max-width: 456px) {
+    min-height: 30vh;
+  }
+
+  @media (max-width: 768px) {
+    &::after {
+      display: none;
+    }
+  }
+
+  @media (min-width: 3000px) {
+    min-height: 40px;
+  }
+}
+
+.heroContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
+  .heroCrumbs {
+    margin-bottom: 3rem;
+
+    @media (max-width: 991px) {
+      display: none;
+    }
+
+    a,
+    p {
+      font-size: 0.875rem;
+      color: var(--color-primary-light);
+    }
+  }
+}
