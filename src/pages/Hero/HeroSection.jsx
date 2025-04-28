@@ -31,19 +31,19 @@ const HeroSection = () => {
                 >
                   <Link
                     underline="hover"
-                    href="https://www.sw.siemens.com/en-US/"
+                    href="#"
                   >
                     <HomeIcon style={{ color: "var(--color-primary-light)" }} />
                   </Link>
                   <Link
                     underline="hover"
-                    href="https://plm.sw.siemens.com/en-US/"
+                    href="#"
                   >
                     PLM Software
                   </Link>
                   <Link
                     underline="hover"
-                    href="https://plm.sw.siemens.com/en-US/active-integration/"
+                    href="#"
                   >
                     Active Integration
                   </Link>

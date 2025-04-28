@@ -72,7 +72,7 @@ const SubNav = () => {
                 className={styles.productsBtn}
                 style={{ backgroundColor: "var(--color-grey)" }}
                 component="a"
-                href="https://plm.sw.siemens.com/en-US/active-integration/consulting/"
+                href="#"
               >
                 Consulting
               </Button>
@@ -81,7 +81,7 @@ const SubNav = () => {
                 variant="contained"
                 disableElevation
                 component="a"
-                href="https://plm.sw.siemens.com/en-US/contact-plm/"
+                href="#"
               >
                 Contact us
               </Button>
@@ -101,17 +101,22 @@ const SubNav = () => {
       {isMobile && (
         <Collapse in={openAccordion}>
           <Box className={styles.mobileAccordion}>
-            <Button fullWidth className={styles.productsBtn}>
+            <Button
+              fullWidth
+              endIcon={<ExpandMore />}
+              className={`${styles.btn} ${styles.borderBottom}`}
+            >
               Products
-            </Button>
-            <Button fullWidth className={styles.productsBtn}>
-              Consulting
             </Button>
             <Button
               fullWidth
-              className={styles.contactBtn}
-              variant="contained"
+              className={`${styles.btn} ${styles.consultingBtn}`}
+            >
+              Consulting
+            </Button>
+            <Button
               disableElevation
+              className={`${styles.btn} ${styles.contactUsBtn}`}
             >
               Contact us
             </Button>

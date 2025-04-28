@@ -163,22 +163,22 @@ export const menuItems = [
       {
         title: "Aerospace & defense",
         hasUpArrow: true,
-        url: "https://xcelerator.siemens.com/global/en/industries/aerospace.html",
+        url: "#",
       },
       {
         title: "Automotive & transportation",
         hasUpArrow: true,
-        url: "https://xcelerator.siemens.com/global/en/industries/automotive-manufacturing.html",
+        url: "#",
       },
       {
         title: "Battery",
         hasUpArrow: true,
-        url: "https://xcelerator.siemens.com/global/en/industries/battery-manufacturing.html",
+        url: "#",
       },
       {
         title: "Electronics & semiconductors",
         hasUpArrow: true,
-        url: "https://xcelerator.siemens.com/global/en/industries/electronics.html",
+        url: "#",
       },
       { title: "Energy & utilities" },
       { title: "Food & beverage" },

@@ -18,7 +18,7 @@ const DeepenKnowledge = () => {
       description:
         "Siemens offers world-class customer support for all Active Integration products.",
       linkText: "Contact us",
-      linkUrl: "https://plm.sw.siemens.com/en-US/contact-plm/",
+      linkUrl: "#",
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ const DeepenKnowledge = () => {
       description:
         "Siemens Xcelerator Academy offers on-demand or instructor-lead training options for Active Integration solutions.",
       linkText: "Visit Siemens Xcelerator Academy",
-      linkUrl: "https://training.plm.automation.siemens.com/index.cfm",
+      linkUrl: "#",
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ const DeepenKnowledge = () => {
       description:
         "Gain new perspectives on Teamcenter and the PLM market in general.",
       linkText: "Visit Teamcenter blog",
-      linkUrl: "https://blogs.sw.siemens.com/teamcenter/",
+      linkUrl: "#",
     },
   ];
 

@@ -54,7 +54,7 @@ const Footer = () => {
             <Box display="flex" gap={1}>
               <IconButton
                 component="a"
-                href="https://www.facebook.com/SiemensDISoftware/"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 color="inherit"
@@ -63,7 +63,7 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 component="a"
-                href="https://twitter.com/siemenssoftware"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 color="inherit"
@@ -72,7 +72,7 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 component="a"
-                href="https://www.linkedin.com/company/siemenssoftware/"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 color="inherit"
@@ -81,7 +81,7 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 component="a"
-                href="https://www.instagram.com/siemenssoftware/"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 color="inherit"
@@ -90,7 +90,7 @@ const Footer = () => {
               </IconButton>
               <IconButton
                 component="a"
-                href="https://www.youtube.com/SiemensSoftware"
+                href="#"
                 target="_blank"
                 rel="noopener noreferrer"
                 color="inherit"

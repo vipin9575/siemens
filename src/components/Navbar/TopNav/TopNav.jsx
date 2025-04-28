@@ -23,6 +23,19 @@ import {
 import styles from "./TopNav.module.scss";
 import { useEffect, useRef, useState } from "react";
 import { menuItems } from "../../../data";
+import DesktopDrawer from "../../../pages/Drawers/DesktopDrawer";
+
+const topNavItem = [
+  { label: "Digital Industries Software", isActive: true },
+  {
+    label: "Software & products",
+    isActive: false,
+    subMenu: [{ label: "Electrical systems" }, { label: "Electronic design" }],
+  },
+  { label: "Solutions & services", isActive: false },
+  { label: "Industries", isActive: false },
+  { label: "Training & support", isActive: false },
+];
 
 const TopNav = () => {
   const containerRef = useRef(null);
@@ -35,6 +48,8 @@ const TopNav = () => {
   const [activeSubMenu, setActiveSubMenu] = useState(null);
   const [activeNestedSubMenu, setActiveNestedSubMenu] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openDesktopMenu, setOpenDesktopMenu] = useState(false);
+  const [subMenu, setSubMenu] = useState(false);
   const isMobile = useMediaQuery("(max-width:450px)");
   const isDesktop = useMediaQuery("(min-width:991px)");
 
@@ -73,6 +88,15 @@ const TopNav = () => {
   const handleNestedDrawerClose = () => {
     setActiveNestedSubMenu(null);
     setNestedDrawerOpen(false);
+  };
+
+  const handleDesktopDrawerOpen = (menu) => {
+    setSubMenu(menu);
+    setOpenDesktopMenu(true);
+  };
+
+  const handleDesktopDraweClose = () => {
+    setOpenDesktopMenu(false);
   };
 
   useEffect(() => {
@@ -167,13 +191,16 @@ const TopNav = () => {
           </Box>
         </Box>
         <Box className={styles.menu}>
-          <Typography component="span" className={styles.active}>
-            Digital Industries Software
-          </Typography>
-          <Typography component="span">Software & products</Typography>
-          <Typography component="span">Solutions & services</Typography>
-          <Typography component="span">Industries</Typography>
-          <Typography component="span">Training & support</Typography>
+          {topNavItem.map((item, index) => (
+            <Typography
+              key={index}
+              component="span"
+              className={`${item.isActive ? styles.active : ""}`}
+              onClick={() => handleDesktopDrawerOpen(item)}
+            >
+              {item.label}
+            </Typography>
+          ))}
         </Box>
       </Box>
       <Box
@@ -185,17 +212,16 @@ const TopNav = () => {
             ref={menuRef}
             style={{ transform: `translateX(${translateX}px)` }}
           >
-            <Typography
-              component="span"
-              ref={firstItemRef}
-              className={styles.active}
-            >
-              Digital Industries Software
-            </Typography>
-            <Typography component="span">Software & products</Typography>
-            <Typography component="span">Solutions & services</Typography>
-            <Typography component="span">Industries</Typography>
-            <Typography component="span">Training & support</Typography>
+            {topNavItem.map((item, index) => (
+              <Typography
+                key={index}
+                component="span"
+                ref={index === 0 ? firstItemRef : null}
+                className={index === 0 ? styles.active : ""}
+              >
+                {item.label}
+              </Typography>
+            ))}
           </Box>
         </Box>
         <Box className={styles.icons}>
@@ -373,6 +399,13 @@ const TopNav = () => {
           </List>
         </Drawer>
       )}
+
+      {/* Desktop Drawer */}
+      <DesktopDrawer
+        open={openDesktopMenu}
+        subMenu={subMenu}
+        close={handleDesktopDraweClose}
+      />
     </>
   );
 };
