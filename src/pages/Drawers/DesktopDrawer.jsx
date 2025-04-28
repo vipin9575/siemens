@@ -16,7 +16,7 @@ const DesktopDrawer = ({ open, close, subMenu }) => {
   return (
     <Drawer
       anchor="left"
-      slotProps={{ backdrop: { style: { opacity: 0 } } }}
+    //   slotProps={{ backdrop: { style: { opacity: 0 } } }}
       PaperProps={{
         sx: {
           width: "100%",
@@ -24,7 +24,7 @@ const DesktopDrawer = ({ open, close, subMenu }) => {
           backgroundColor: "var(--color-interactive-coral-8-db)",
           color: "var(--color-primary-light)",
           top: "145px",
-          zIndex: 9999,
+        //   zIndex: 9999,
         },
       }}
       open={open}

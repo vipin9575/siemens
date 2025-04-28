@@ -39,7 +39,6 @@ function App() {
           position: "sticky",
           top: 0,
           zIndex: 9999,
-          width: "100vw",
         }}
       >
         <TopNav isMenuVisible={isMobileView} />
