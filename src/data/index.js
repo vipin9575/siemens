@@ -1,10 +1,10 @@
 export const menuItems = [
   {
-    title: "Digital Industries Software",
+    title: "Services Portfolio",
     hasBorder: true,
   },
   {
-    title: "Software & products",
+    title: "Customer Support Case Studies",
     hasSubMenu: true,
     subMenu: [
       {

@@ -8,6 +8,8 @@ import Footer from "./pages/Footer/Footer";
 import CardSection from "./pages/CardSection/CardSection";
 import DeepenKnowledge from "./pages/DeepenKnowledge/DeepenKnowledge";
 import MainSection from "./pages/MainSection/MainSection";
+import SectionAhead from "./components/SectionA/SectionAhead";
+import SectionVideo from "./components/SectionB/SectionVideo";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,7 +64,13 @@ function App() {
         <MainSection />
       </Container>
       <Container maxWidth disableGutters>
+        <SectionVideo />
+      </Container>
+      <Container maxWidth disableGutters>
         <CardSection />
+      </Container>
+      <Container maxWidth disableGutters>
+        <SectionAhead />
       </Container>
       <Container maxWidth disableGutters>
         <DeepenKnowledge />
