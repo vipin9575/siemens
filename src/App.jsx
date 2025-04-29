@@ -9,6 +9,7 @@ import CardSection from "./pages/CardSection/CardSection";
 import DeepenKnowledge from "./pages/DeepenKnowledge/DeepenKnowledge";
 import MainSection from "./pages/MainSection/MainSection";
 import SectionAhead from "./components/SectionA/SectionAhead";
+import SectionVideo from "./components/SectionB/SectionVideo";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,6 +63,9 @@ function App() {
       </Container>
       <Container maxWidth disableGutters>
         <MainSection />
+      </Container>
+      <Container maxWidth disableGutters>
+        <SectionVideo />
       </Container>
       <Container maxWidth disableGutters>
         <CardSection />
