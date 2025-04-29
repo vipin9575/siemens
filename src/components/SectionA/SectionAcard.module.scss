@@ -15,6 +15,7 @@
   max-width: calc(50% - 20px);
   color: #000028;
   background-color: #fff;
+  border-radius: 10px;
 
   @media (max-width: 768px) {
     flex: 1 1 100%; /* One card per row for mobile */
@@ -25,7 +26,7 @@
 .card {
   height: 140px; /* Set the height of each card */
   border: 1px solid #e0e0e0;
-  border-radius: 0;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box shadow */
   overflow: hidden;
 }

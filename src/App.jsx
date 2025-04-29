@@ -10,6 +10,7 @@ import DeepenKnowledge from "./pages/DeepenKnowledge/DeepenKnowledge";
 import MainSection from "./pages/MainSection/MainSection";
 import SectionAhead from "./components/SectionA/SectionAhead";
 import SectionVideo from "./components/SectionB/SectionVideo";
+import ConnectSection from "./components/ConnectSection/ConnectSection";
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -74,6 +75,9 @@ function App() {
       </Container>
       <Container maxWidth disableGutters>
         <DeepenKnowledge />
+      </Container>
+      <Container maxWidth disableGutters>
+        <ConnectSection />
       </Container>
       <Container maxWidth disableGutters>
         <Footer />
