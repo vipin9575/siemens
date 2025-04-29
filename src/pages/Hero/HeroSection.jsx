@@ -29,22 +29,13 @@ const HeroSection = () => {
                     />
                   }
                 >
-                  <Link
-                    underline="hover"
-                    href="#"
-                  >
+                  <Link underline="hover" href="#">
                     <HomeIcon style={{ color: "var(--color-primary-light)" }} />
                   </Link>
-                  <Link
-                    underline="hover"
-                    href="#"
-                  >
+                  <Link underline="hover" href="#">
                     PLM Software
                   </Link>
-                  <Link
-                    underline="hover"
-                    href="#"
-                  >
+                  <Link underline="hover" href="#">
                     Active Integration
                   </Link>
                   <Typography component="p">

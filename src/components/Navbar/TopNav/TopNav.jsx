@@ -26,9 +26,9 @@ import { menuItems } from "../../../data";
 import DesktopDrawer from "../../../pages/Drawers/DesktopDrawer";
 
 const topNavItem = [
-  { label: "Digital Industries Software", isActive: true },
+  { label: "Services Portfolio", isActive: true },
   {
-    label: "Software & products",
+    label: "Customer Support Case Studies",
     isActive: false,
     subMenu: [{ label: "Electrical systems" }, { label: "Electronic design" }],
   },

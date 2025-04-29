@@ -79,8 +79,8 @@ const TopNav = () => {
         </Box>
       </Box>
       <Box className={styles.menu}>
-        <span className={styles.active}>Digital Industries Software</span>
-        <span>Software & products</span>
+        <span className={styles.active}>Services Portfolio</span>
+        <span>Customer Support Case Studies</span>
         <span>Solutions & services</span>
         <span>Industries</span>
         <span>Training & support</span>
@@ -104,12 +104,12 @@ const TopNav = () => {
         <List>
           <ListItem button>
             <ListItemText
-              primary="Digital Industries Software"
+              primary="Services Portfolio"
               className={styles.menuItem}
             />
           </ListItem>
           <ListItem button>
-            <ListItemText primary="Software & products" />
+            <ListItemText primary="Customer Support Case Studies" />
           </ListItem>
           <ListItem button>
             <ListItemText primary="Solutions & services" />

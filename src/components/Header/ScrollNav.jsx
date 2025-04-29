@@ -41,9 +41,9 @@ const ScrollNav = () => {
           style={{ transform: `translateX(${translateX}px)` }}
         >
           <span ref={firstItemRef} className={styles.active}>
-            Digital Industries Software
+            Services Portfolio
           </span>
-          <span>Software & products</span>
+          <span>Customer Support Case Studies</span>
           <span>Solutions & services</span>
           <span>Industries</span>
           <span>Training & support</span>

@@ -1,0 +1,80 @@
+.heroBackground {
+  //background-image: url("../../assets/images/hero_backgroundImage.avif");
+  //   background-size: cover;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  min-height: 60vh;
+  width: 100%;
+  position: relative;
+  background-color: #000028;
+  color: #fff;
+
+  @media (max-width: 456px) {
+    min-height: 30vh;
+  }
+
+  @media (max-width: 768px) {
+    &::after {
+      display: none;
+    }
+  }
+
+  @media (min-width: 3000px) {
+    min-height: 40px;
+  }
+}
+.heroContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+
+  .heroCrumbs {
+    margin-bottom: 3rem;
+
+    @media (max-width: 991px) {
+      display: none;
+    }
+
+    a,
+    p {
+      font-size: 0.875rem;
+      color: var(--color-primary-light);
+    }
+  }
+}
+.siemensCards {
+  flex: 1 1 calc(63% - 20px); /* Two cards per row for large screens */
+  max-width: calc(63% - 20px);
+
+  @media (max-width: 768px) {
+    flex: 1 1 100%; /* One card per row for mobile */
+    max-width: 100%;
+  }
+}
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+.heroParagraph {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}
