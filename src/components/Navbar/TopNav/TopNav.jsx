@@ -22,20 +22,8 @@ import {
 } from "@mui/icons-material";
 import styles from "./TopNav.module.scss";
 import { useEffect, useRef, useState } from "react";
-import { menuItems } from "../../../data";
+import { menuItems, topNavItem } from "../../../data";
 import DesktopDrawer from "../../../pages/Drawers/DesktopDrawer";
-
-const topNavItem = [
-  { label: "Services Portfolio", isActive: true },
-  {
-    label: "Customer Support Case Studies",
-    isActive: false,
-    subMenu: [{ label: "Electrical systems" }, { label: "Electronic design" }],
-  },
-  { label: "Solutions & services", isActive: false },
-  { label: "Industries", isActive: false },
-  { label: "Training & support", isActive: false },
-];
 
 const TopNav = () => {
   const containerRef = useRef(null);
@@ -401,11 +389,13 @@ const TopNav = () => {
       )}
 
       {/* Desktop Drawer */}
-      <DesktopDrawer
-        open={openDesktopMenu}
-        subMenu={subMenu}
-        close={handleDesktopDraweClose}
-      />
+      {subMenu && (
+        <DesktopDrawer
+          open={openDesktopMenu}
+          subMenu={subMenu}
+          close={handleDesktopDraweClose}
+        />
+      )}
     </>
   );
 };
