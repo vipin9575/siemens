@@ -218,6 +218,7 @@ const TopNav = () => {
                 component="span"
                 ref={index === 0 ? firstItemRef : null}
                 className={index === 0 ? styles.active : ""}
+                onClick={() => handleDesktopDrawerOpen(item)}
               >
                 {item.label}
               </Typography>
